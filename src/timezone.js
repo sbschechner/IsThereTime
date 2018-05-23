@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './timezone.css';
 
 
 class Timezone extends Component {
@@ -9,14 +8,16 @@ class Timezone extends Component {
     this.state = {
         user_timeZone: null,
         utc_offset: null,
+        tempZip: null,
         hasCurrentzone: false,
         currentHour: null,
-        currentDay: null,
         currentMinute:null,
         };
 
 this.getDate = this.getDate.bind(this);
 this.zipToZone = this.zipToZone.bind(this);
+this.changeTempNumber = this.changeTempNumber.bind(this);
+this.handleClick = this.handleClick.bind(this);
 }
 
 getDate(){
@@ -32,7 +33,6 @@ componentDidMount(){
   }
 
   this.setState({
-  	currentDay : days[theDate.getDay()],
   	currentHour: theDate.getHours(),
   	currentMinute: minutes
   })
@@ -43,6 +43,10 @@ handleClick(event){
   console.log("handle Click");
   this.zipToZone()
 }
+
+changeTempNumber(event){
+    this.setState({tempZip : event.target.value})
+    }
 
 zipToZone(){
   var URL =  'https://www.zipcodeapi.com/rest/js-Hl77BtUvoCMVIgyb7lK0u4cUWnkhEe9lzgsbKmH8Zu4HKDSRYDSsH5mDsHV7V5sv/info.json/'+ this.state.tempZip+'/degrees'
@@ -60,12 +64,14 @@ zipToZone(){
   )
 }
 
+// <Sunset timezone={this.state.user_timeZone}/>
 
 updateTimezone(){
 	if (this.state.hasCurrentzone === true){
 		return(
 			<div>
-				<Sunset timezone={this.state.user_timeZone}/>
+				<p> You are currently located in {this.state.user_timeZone} </p>
+				
 			</div>
 			)
 	}
@@ -74,14 +80,23 @@ updateTimezone(){
 
   render() {
     return (
-       <div id="time">
+       <div id="overallHeader">
             <h2 id="header"> The Time </h2>
       			<div className ="dateTimeCont">
       				<h2> The Time is <span> {this.state.currentHour} : {this.state.currentMinute} </span> </h2>
-          </div>
-          <userInput />
+         	 </div>
+          <div id="userZipForm">
+        <form>
+        	<label>
+         		Please enter your zip code so we can find your time zone: 
+            	<input type='number' defaultValue = {this.state.tempZip}  onChange = {this.changeTempNumber}/>
+            	</label>
+            	<input type="submit" value="Submit Zip" onClick = {this.handleClick}/>
+        </form>
+		</div>
+
      		{this.updateTimezone()}
-     		</div>
+	</div>     		
 			)
   }
 }
