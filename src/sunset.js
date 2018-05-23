@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './sunset.css';
 
 class Sunset extends Component {
 

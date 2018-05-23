@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Sunset from './sunset'
+import './timezone.css';
+
 
 
 class Timezone extends Component {
