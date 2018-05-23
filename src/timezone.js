@@ -46,10 +46,17 @@ componentDidMount(){
 }
 
 handleClick(event){
+      if (this.state.tempZip.length === 5){ 	
   event.preventDefault();
   console.log("handle Click");
   this.zipToZone();
+  }
+  else{
+  	alert("please try again and only enter 5 digits");
+  }
+
   this.refs.zip.value="";
+
 }
 
 changeTempNumber(event){
@@ -107,13 +114,13 @@ reset(){
     return (
        <div id="overallHeader">
       			<div className ="dateTimeCont">
-      				<h2> The Time is <span> {this.state.currentHour} : {this.state.currentMinute} </span> </h2>
+      				<h2> The time is <span> {this.state.currentHour} : {this.state.currentMinute} </span> </h2>
          	 </div>
           <div id="userZipForm">
         <form>
         	<label>
-         		Please enter your zip code to find your time zone: 
-            	<input ref ="zip" type='number' defaultValue = {this.state.tempZip}  onChange = {this.changeTempNumber}/>
+         		Please enter a zip code to locate your time zone: 
+            	<input ref ="zip" type='number' className="zipInput" defaultValue = {this.state.tempZip}  onChange = {this.changeTempNumber}/>
             	</label>
             	<input type="submit" value="Submit Zip" onClick = {this.handleClick}/>
         </form>
