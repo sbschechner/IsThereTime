@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import Sunset from './sunset'
+import Sunset from './sunset'
 
 
 class Timezone extends Component {
@@ -9,6 +9,8 @@ class Timezone extends Component {
     this.state = {
         user_timeZone: null,
         utc_offset: null,
+        userlat:null,
+        userlong: null,
         tempZip: null,
         hasCurrentzone: false,
         currentHour: null,
@@ -59,6 +61,8 @@ zipToZone(){
         console.log("hello - we have hit the api for zip to convert to timezone");
         console.log(data); 
         this.setState({
+        	userlat : data.lat,
+        	userlong: data.lng,
             user_timeZone : data.timezone.timezone_identifier,
             utc_offset: data.timezone.utc_offset_sec,
             hasCurrentzone : true,
@@ -67,14 +71,12 @@ zipToZone(){
   )
 }
 
-//<Sunset timezone={this.state.user_timeZone}/>
-
 updateTimezone(){
 	if (this.state.hasCurrentzone === true){
 		return(
 			<div>
 				<p> You entered {this.state.tempZip} and are currently located in {this.state.user_timeZone} </p>
-				 
+				 <Sunset utc={this.state.utc_offset} hour= {this.state.currentHour} minute={this.state.currentMinute} lat = {this.state.userlat} long ={this.state.userlong} />
 			</div>
 			)
 	}
