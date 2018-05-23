@@ -13,6 +13,7 @@ class Sunset extends Component {
         };
 
 this.getSunset = this.getSunset.bind(this);
+this.calculateRemaining = this.calculateRemaining.bind(this);
 }
 
 getSunset(){
@@ -40,7 +41,25 @@ fetchSunset(){
 }
 
 calculateRemaining(){
+    var secondsToHours = this.props.utc/3600;
+    var sunsetArr = this.state.sunsetTime.split(":");
+    var sunSetHour = parseInt(sunsetArr[0],8);
+    var sunSetMinute = parseInt(sunsetArr[1],8);
+    var sunSetUserTimeHour = sunSetHour + secondsToHours;
+    var sunSetUserTimeMinute = sunSetMinute;
+
+console.log(sunSetHour + "hour")
+console.log(sunSetMinute + " minute")
+console.log(sunSetUserTimeHour + "math hour")
+
+    if (this.state.hasSunset === true) {
+        this.setState({
+        remainingHours : sunSetUserTimeHour
+    }
     
+    this.setState({
+        hasSunset : false
+    })
 }
 
 
@@ -51,7 +70,7 @@ render(){
         <p> we are in the sunset - TO BE REMOVED </p>
             
             {this.fetchSunset()}
-
+            {this.calculateRemaining()}
         <p> sunset: {this.state.sunsetTime} - to be removed </p>
         <p> you have {this.state.remainingHours} hours and {this.state.remainingMinutes} minutes to sunset - get moving! </p>
        
