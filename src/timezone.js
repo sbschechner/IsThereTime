@@ -14,6 +14,7 @@ class Timezone extends Component {
         userlat:null,
         userlong: null,
         cityName: null,
+        stateName: null,
         tempZip: null,
         hasCurrentzone: false,
         currentHour: null,
@@ -74,6 +75,7 @@ zipToZone(){
         	userlat : data.lat,
         	userlong: data.lng,
         	cityName: data.city,
+        	stateName: data.state,
             user_timeZone : data.timezone.timezone_identifier,
             utc_offset: data.timezone.utc_offset_sec,
             hasCurrentzone : true,
@@ -86,7 +88,7 @@ updateTimezone(){
 	if (this.state.hasCurrentzone === true){
 		return(
 			<div>
-				<p> You entered {this.state.tempZip} which is in {this.state.cityName} </p>
+				<p> You entered {this.state.tempZip} which is in {this.state.cityName}, {this.state.stateName} </p>
 				 <Sunset utc={this.state.utc_offset} hour= {this.state.currentHour} minute={this.state.currentMinute} lat = {this.state.userlat} long ={this.state.userlong} />
 			</div>
 			)

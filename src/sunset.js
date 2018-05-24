@@ -47,7 +47,7 @@ fetchSunset(){
 }
 
 updateRemaining(hoursLeft, minutesleft, hours, minutes, currentHour, currentMinute){
-    if((currentHour >= 21  {
+    if(currentHour >= 21 ) {
         hoursLeft = 0;
         minutesleft = 0;
     }
