@@ -38,7 +38,7 @@ componentDidMount(){
   var minutes = theDate.getMinutes()
   if(minutes<10){
     minutes = "0"+ minutes
-  }
+  }	
 
   this.setState({
   	currentHour: theDate.getHours(),
@@ -86,7 +86,7 @@ updateTimezone(){
 	if (this.state.hasCurrentzone === true){
 		return(
 			<div>
-				<p> You entered {this.state.tempZip} which is in {this.state.cityName}, located in the {this.state.user_timeZone} timezone </p>
+				<p> You entered {this.state.tempZip} which is in {this.state.cityName} </p>
 				 <Sunset utc={this.state.utc_offset} hour= {this.state.currentHour} minute={this.state.currentMinute} lat = {this.state.userlat} long ={this.state.userlong} />
 			</div>
 			)
@@ -121,7 +121,7 @@ reset(){
           <div id="userZipForm">
         <form>
         	<label>
-         		Please enter a zip code to locate your time zone: 
+         		Please enter a zip code to locate your timezone: 
             	<input ref ="zip" type='number' className="zipInput" placeholder= "e.g 12345" defaultValue = {this.state.tempZip}  onChange = {this.changeTempNumber}/>
             	</label>
             	<input className="zipButton" type="submit" value="Submit Zip" onClick = {this.handleClick}/>
