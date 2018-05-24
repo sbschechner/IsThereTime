@@ -65,7 +65,7 @@ changeTempNumber(event){
     }
 
 zipToZone(){
-  var URL =  'https://www.zipcodeapi.com/rest/js-Hl77BtUvoCMVIgyb7lK0u4cUWnkhEe9lzgsbKmH8Zu4HKDSRYDSsH5mDsHV7V5sv/info.json/'+ this.state.tempZip+'/degrees'
+  var URL =  'https://www.zipcodeapi.com/rest/js-clqq6LHooxlUDBf8p3AtzDuSL9BUgVUtgkTm6BLv87qMIFU8JvCi96bUgMPxHJ0Y/info.json/'+ this.state.tempZip+'/degrees'
   fetch(URL).then((response) => response.json())
      .then(data => {
         console.log("hello - we have hit the api for zip to convert to timezone");
