@@ -1,6 +1,17 @@
 .zipInput{
 margin-right: 10px;
 margin-left: 10px;
+border-radius: 3px;
 
+}
+
+.zipButton, .resetButton{
+	background: black;
+	color: white;
+	font-style: italic;
+	border-radius: 4px;
+	padding: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 

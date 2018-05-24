@@ -13,6 +13,7 @@ class Timezone extends Component {
         utc_offset: null,
         userlat:null,
         userlong: null,
+        cityName: null,
         tempZip: null,
         hasCurrentzone: false,
         currentHour: null,
@@ -72,6 +73,7 @@ zipToZone(){
         this.setState({
         	userlat : data.lat,
         	userlong: data.lng,
+        	cityName: data.city,
             user_timeZone : data.timezone.timezone_identifier,
             utc_offset: data.timezone.utc_offset_sec,
             hasCurrentzone : true,
@@ -84,7 +86,7 @@ updateTimezone(){
 	if (this.state.hasCurrentzone === true){
 		return(
 			<div>
-				<p> You entered {this.state.tempZip} and are currently located in {this.state.user_timeZone} </p>
+				<p> You entered {this.state.tempZip} which is in {this.state.cityName}, located in the {this.state.user_timeZone} timezone </p>
 				 <Sunset utc={this.state.utc_offset} hour= {this.state.currentHour} minute={this.state.currentMinute} lat = {this.state.userlat} long ={this.state.userlong} />
 			</div>
 			)
@@ -104,7 +106,7 @@ reset(){
 		if(this.state.hasCurrentzone === true){
 		return(
 
-			<button className = "resetButton" onClick={this.resetButtonAppear}> Look up another timezone by zip code </button>
+			<button className ="resetButton" onClick={this.resetButtonAppear}> Look Up Another Sunset Time By Zip </button>
 
 			)
 	}
@@ -120,9 +122,9 @@ reset(){
         <form>
         	<label>
          		Please enter a zip code to locate your time zone: 
-            	<input ref ="zip" type='number' className="zipInput" defaultValue = {this.state.tempZip}  onChange = {this.changeTempNumber}/>
+            	<input ref ="zip" type='number' className="zipInput" placeholder= "e.g 12345" defaultValue = {this.state.tempZip}  onChange = {this.changeTempNumber}/>
             	</label>
-            	<input type="submit" value="Submit Zip" onClick = {this.handleClick}/>
+            	<input className="zipButton" type="submit" value="Submit Zip" onClick = {this.handleClick}/>
         </form>
 		</div>
 

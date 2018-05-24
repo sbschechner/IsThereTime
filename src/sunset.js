@@ -19,6 +19,7 @@ class Sunset extends Component {
 
 this.getSunset = this.getSunset.bind(this);
 this.calculateRemaining = this.calculateRemaining.bind(this);
+this.printRemainingTime = this.printRemainingTime.bind (this);
 }
 
 getSunset(){
@@ -46,6 +47,10 @@ fetchSunset(){
 }
 
 updateRemaining(hoursLeft, minutesleft, hours, minutes, currentHour, currentMinute){
+    if(currentHour >= 21){
+        hoursLeft = 0;
+        minutesleft = 0;
+    }
 
     if (this.state.count === 1 && this.state.hasSunset === true){
         this.setState({
@@ -84,7 +89,7 @@ calculateRemaining(){
 
     if (this.props.utc !== -14400) { //-14400 is EST
         var timeDifference = Math.abs((this.props.utc - -14400) / 3600) 
-        realHoursLeft = realHoursLeft + timeDifference + timeDifference 
+        realHoursLeft = realHoursLeft + timeDifference 
         console.log("creating a timeDifference and the realhours " + realHoursLeft)
         currentHour = currentHour - timeDifference;
     }
@@ -114,20 +119,36 @@ calculateRemaining(){
 
 }
 
+printRemainingTime(){
+    if (this.state.remainingMinutes === 0 && this.state.remainingHours === 0) {
+        return(
+            <div>
+                <p> The sunset at this zip code was at {this.state.sunSetHour} : {this.state.sunSetMinute} pm </p>
+                <p> The sun has already set - there is unfortunately no more time </p>
+            </div>
+            )
+    }
+    else{
+       return(
+        <div>
+            <p> The sunset at this zip code is at {this.state.sunSetHour} : {this.state.sunSetMinute} pm </p> 
+            <p> There is still time - you have {this.state.remainingHours} hours and {this.state.remainingMinutes} minutes to sunset - get exercising! </p>
+        </div>
+    )
+    }
+}
 
 render(){
     return(
-        <div>
-        <p> we are in the sunset - TO BE REMOVED </p>
-            
+        <div className = "response">
+           <p className = "borderDesign"> ...... </p>
             {this.fetchSunset()}
             {this.calculateRemaining()}
-        <p> current time in the zip code is {this.state.currentHourTime} : {this.state.currentMinuteTime}  </p>
-        <p> sunset at the zip code : {this.state.sunSetHour} : {this.state.sunSetMinute} pm </p> 
-
-        <p> you have {this.state.remainingHours} hours and {this.state.remainingMinutes} minutes to sunset - get moving! </p>
-       
+        <p> The time for that timezone is {this.state.currentHourTime} : {this.state.currentMinuteTime}  </p>
+        {this.printRemainingTime()}
+         <p className = "borderDesign"> ...... </p>
         </div>
+
         )
 }
 
