@@ -76,7 +76,6 @@ zipToZone(){
         	userlong: data.lng,
         	cityName: data.city,
         	stateName: data.state,
-            user_timeZone : data.timezone.timezone_identifier,
             utc_offset: data.timezone.utc_offset_sec,
             hasCurrentzone : true,
         })  
@@ -123,7 +122,7 @@ reset(){
           <div id="userZipForm">
         <form>
         	<label>
-         		Please enter a zip code to locate your timezone: 
+         		Please enter a zip code to find the hours until sunset: 
             	<input ref ="zip" type='number' className="zipInput" placeholder= "e.g 12345" defaultValue = {this.state.tempZip}  onChange = {this.changeTempNumber}/>
             	</label>
             	<input className="zipButton" type="submit" value="Submit Zip" onClick = {this.handleClick}/>
