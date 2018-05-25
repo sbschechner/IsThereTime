@@ -122,7 +122,7 @@ reset(){
           <div id="userZipForm">
         <form>
         	<label>
-         		Please enter a zip code to find the hours until sunset: 
+         		Please enter a zip code to find the time until sunset: 
             	<input ref ="zip" type='number' className="zipInput" placeholder= "e.g 12345" defaultValue = {this.state.tempZip}  onChange = {this.changeTempNumber}/>
             	</label>
             	<input className="zipButton" type="submit" value="Submit Zip" onClick = {this.handleClick}/>

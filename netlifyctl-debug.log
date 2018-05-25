@@ -1,0 +1,14 @@
+[37mDEBU[0m[25 May 18 17:12 -0400] PreRun                                        [37marguments[0m=[] [37mcommand[0m=deploy
+[37mDEBU[0m[25 May 18 17:12 -0400] configure debug middleware                   
+[37mDEBU[0m[25 May 18 17:12 -0400] configure logging middleware                 
+[37mDEBU[0m[25 May 18 17:12 -0400] setup logger middleware: panic               
+[37mDEBU[0m[25 May 18 17:12 -0400] configure auth middleware                    
+[37mDEBU[0m[25 May 18 17:12 -0400] setup credentials                             [37mcredentials[0m=0x1469430
+[37mDEBU[0m[25 May 18 17:12 -0400] configure client middleware                  
+[37mDEBU[0m[25 May 18 17:12 -0400] setup API endpoint                            [37mendpoint[0m="https://api.netlify.com"
+[37mDEBU[0m[25 May 18 17:12 -0400] configure site middleware                    
+[37mDEBU[0m[25 May 18 17:12 -0400] Parsed configuration: {Settings:{ID:957858dc-0f2c-4bdf-8f64-524187ac1e80 Path:} Build:{Publish: Functions:} root:/Users/think/Documents/Programming/IsThereTime/is-there-time} 
+[37mDEBU[0m[25 May 18 17:13 -0400] Got new path from the user                   
+[37mDEBU[0m[25 May 18 17:13 -0400] Relative path detected, going to deploy: '/Users/think/Documents/Programming/IsThereTime/is-there-time/as' 
+[37mDEBU[0m[25 May 18 17:13 -0400] deploying site                                [37mdraft[0m=false [37mpath[0m="/Users/think/Documents/Programming/IsThereTime/is-there-time/as" [37msite[0m=957858dc-0f2c-4bdf-8f64-524187ac1e80
+[31mERRO[0m[25 May 18 17:13 -0400] command failed                                [31merror[0m="stat /Users/think/Documents/Programming/IsThereTime/is-there-time/as: no such file or directory"
